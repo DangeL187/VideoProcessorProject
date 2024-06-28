@@ -29,7 +29,7 @@ make
 - The `VideoProcessor` class runs two threads: a video processing thread (`VideoProcessor::processVideo`) and a frame conversion thread(`VideoProcessor::convertFrames`).
 - `VideoProcessor` has two main queues: `std::queue<Frame> _frames` and `std::queue<MatFrame> _mat_frames` for storing frames.
 - `VideoProcessor::processVideo` is loading video frames to the `_mat_frames` queue.
-- `VideoProcessor::convertFrames` is converting [MatFrame]() objects to [Frame]() objects by removing elements from `_mat_frames` and adding them to the `_frames`.
+- `VideoProcessor::convertFrames` is converting [MatFrame](https://github.com/DangeL187/VideoProcessorProject/blob/main/include/Frame/MatFrame.hpp) objects to [Frame](https://github.com/DangeL187/VideoProcessorProject/blob/main/include/Frame/Frame.hpp) objects by removing elements from `_mat_frames` and adding them to the `_frames`.
 - `VideoProcessor::getFrame` method is used for getting the first element of the `_frames` queue.
 > Data safety
 - `VideoProcessor` has two mutexes (`_frame_mutex` and `_mat_frame_mutex`) for safety data transferring.
