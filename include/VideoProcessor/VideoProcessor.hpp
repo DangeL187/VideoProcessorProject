@@ -4,6 +4,7 @@
 #include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
 
+#include <chrono>
 #include <mutex>
 #include <opencv2/opencv.hpp>
 #include <queue>
@@ -25,6 +26,7 @@ class VideoProcessor {
   void stop();
 
  private:
+  void dropFrames(auto& queue, unsigned short frames_limit, unsigned short frames_to_drop = 2);
   void processVideo();
 
   cv::VideoCapture _cap;
