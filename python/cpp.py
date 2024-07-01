@@ -39,11 +39,11 @@ class Player:
             if len(frame.data()) == 0:  # ignore empty frames
                 continue
 
-            self.timers.append((datetime.now() - start).microseconds / 1000000)  # stop timer
-
             # Change current image:
             img = Image.open(io.BytesIO(frame.data()))
             self.image = ImageTk.PhotoImage(image=img)
+
+            self.timers.append((datetime.now() - start).microseconds / 1000000)  # stop timer
 
             if len(self.timers) % 100 == 0 and len(self.timers) > 0:  # each 100th frame, example: 25fps video will print this message once in 4 seconds
                 print(frame.width(), 'x', frame.height(), 'Time:', frame.timestamp())
